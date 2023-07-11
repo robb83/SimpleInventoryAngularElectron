@@ -1,0 +1,31 @@
+
+.page-container {
+}
+
+.page-table-container {
+
+}
+
+.cell-green {
+  color: green;
+  font-weight: 500;
+}
+
+.cell-red {
+  color: red;
+  font-weight: 500;
+}
+
+.mat-header-row {
+  background-color: #224681;
+  color: white !important;
+  font-weight: 500;
+}
+
+.mat-header-cell  {
+  color: white !important;
+}
+
+table {
+  width: 100%;
+}

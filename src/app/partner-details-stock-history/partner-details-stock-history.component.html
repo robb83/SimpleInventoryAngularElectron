@@ -1,0 +1,45 @@
+<div class="page-container mat-elevation-z2">
+    <div class="page-table-container">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z2" matSort (matSortChange)="announceSortChange($event)">
+  
+        <ng-container matColumnDef="item_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Megnevezés </th>
+          <td mat-cell *matCellDef="let element"> {{element.item_name}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="pallets">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Paletta </th>
+          <td mat-cell *matCellDef="let element"> <span class="{{getColoring(element.pallets, element.type)}}"> {{ getNumberFormat(element.pallets, element.type) }}</span></td>
+        </ng-container>
+  
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Darab </th>
+          <td mat-cell *matCellDef="let element"> <span class="{{getColoring(element.quantity, element.type)}}"> {{ getNumberFormat(element.quantity, element.type) }}</span></td>
+        </ng-container>
+  
+        <ng-container matColumnDef="empties">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Göngyöleg </th>
+          <td mat-cell *matCellDef="let element"><span class="{{getColoring(element.empties, element.type)}}"> {{ getNumberFormat(element.empties, element.type) }}</span></td>
+        </ng-container>
+  
+        <ng-container matColumnDef="operation">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Göngyöleg </th>
+          <td mat-cell *matCellDef="let element"><span> {{ element.operation }}</span></td>
+        </ng-container>
+
+        <ng-container matColumnDef="created">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Végrehajtva </th>
+          <td mat-cell *matCellDef="let element"> {{ element.created | date: 'YYYY-MM-dd HH:mm:ss' }} </td>
+        </ng-container>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="5" style="text-align: center;">
+            Táblázat üres
+          </td>
+        </tr>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>

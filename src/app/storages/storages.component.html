@@ -1,0 +1,48 @@
+<div fxLayout="row" fxLayout.xs="column" fxFlexFill fxLayoutGap="25px">
+
+    <div fxFlex="1 1 100%" class="mat-elevation-z2">
+        <mat-toolbar style="background-color: #ccc;">
+            <button mat-raised-button (click)="createNew(null, 0);">Új raktár</button>
+            <button mat-raised-button [disabled]="selectedStorage == null" (click)="deleteEntry(selectedStorage, 0);">Törlés</button>
+        </mat-toolbar>
+        <mat-selection-list [multiple]="false" (selectionChange)="storageChanged($event)">
+            <mat-list-option *ngFor="let item of storages" [value]="item" [selected]="item.id == selectedStorage?.id">
+                {{item.name}}
+            </mat-list-option>
+        </mat-selection-list>        
+        <div *ngIf="storages.length == 0" style="font-style: italic;padding: 10px;" class="mat-typography">
+            Raktárak listája üres.
+        </div>
+    </div>
+
+    <div fxFlex="1 1 100%"  class="mat-elevation-z2">
+        <mat-toolbar style="background-color: #ccc;">
+            <button mat-raised-button [disabled]="selectedStorage == null" (click)="createNew(selectedStorage, 1);">Új helység</button>
+            <button mat-raised-button [disabled]="selectedRoom == null" (click)="deleteEntry(selectedRoom, 1);">Törlés</button>
+        </mat-toolbar>
+        <mat-selection-list [multiple]="false" (selectionChange)="roomChanged($event)">
+            <mat-list-option *ngFor="let item of rooms" [value]="item" [selected]="item.id == selectedRoom?.id">
+                {{item.name}}
+            </mat-list-option>
+        </mat-selection-list>
+        <div *ngIf="rooms.length == 0" style="font-style: italic;padding: 10px;" class="mat-typography">
+            Helységek listája üres.
+        </div>
+    </div>
+
+    <div fxFlex="1 1 100%"  class="mat-elevation-z2">
+        <mat-toolbar style="background-color: #ccc;">
+            <button mat-raised-button [disabled]="selectedRoom == null" (click)="createNew(selectedRoom, 2);">Új polc</button>
+            <button mat-raised-button [disabled]="selectedRoom == null">Polc generálás</button>
+            <button mat-raised-button [disabled]="selectedShelf == null" (click)="deleteEntry(selectedShelf, 2);">Törlés</button>
+        </mat-toolbar>
+        <mat-selection-list [multiple]="false" (selectionChange)="shelfChanged($event)">
+            <mat-list-option *ngFor="let item of shelves" [value]="item" [selected]="item.id == selectedShelf?.id">
+                {{item.name}}
+            </mat-list-option>
+        </mat-selection-list>        
+        <div *ngIf="shelves.length == 0" style="font-style: italic;padding: 10px;" class="mat-typography">
+            Polcok listája üres.
+        </div>
+    </div>
+</div>

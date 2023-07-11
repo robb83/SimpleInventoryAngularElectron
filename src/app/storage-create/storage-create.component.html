@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Új Tároló helység</h2>
+<mat-dialog-content>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Megnevezés</mat-label>
+            <input matInput placeholder="megnevezés" [formControl]="name" required cdkFocusInitial autcomplete="off">
+            <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button (click)="save()">Mentés</button>
+    <button mat-raised-button mat-dialog-close>Bezár</button>
+</mat-dialog-actions>

@@ -1,0 +1,13 @@
+.details {
+    margin-bottom: 10px;
+}
+
+.details table th, .details table td {
+    text-align: left;
+    padding: 2px;
+    font-weight: normal;
+}
+
+.details table td {
+    font-weight: bold;
+}

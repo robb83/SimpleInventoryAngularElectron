@@ -1,0 +1,32 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.HistoryType = void 0;
+var HistoryType;
+(function (HistoryType) {
+    HistoryType[HistoryType["None"] = 0] = "None";
+    HistoryType[HistoryType["Set"] = 1] = "Set";
+    HistoryType[HistoryType["Add"] = 2] = "Add";
+})(HistoryType = exports.HistoryType || (exports.HistoryType = {}));
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+//# sourceMappingURL=interface.js.map

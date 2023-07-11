@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Kitárazás</h2>
+<mat-dialog-content>
+    <div class="details">
+        <table>
+            <tr>
+                <th>Partner:</th>
+                <td>{{ row?.partner_name }}</td>
+            </tr>
+            <tr>
+                <th>Megnevezés:</th>
+                <td>{{ row?.item_name }}</td>
+            </tr>
+            <tr>
+                <th>Helység:</th>
+                <td>{{ row?.location_name }}</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Raklap</mat-label>
+            <input matInput placeholder="megnevezés" [formControl]="pallets" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Mennyiség</mat-label>
+            <input matInput placeholder="" [formControl]="quantity">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Göngyöleg</mat-label>
+            <input matInput placeholder="" [formControl]="empties">
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button (click)="save()">Mentés</button>
+    <button mat-raised-button mat-dialog-close>Bezár</button>
+</mat-dialog-actions>

@@ -1,0 +1,48 @@
+
+.page-container {
+}
+
+.page-table-container {
+}
+
+.page-header-text {
+}
+
+.page-filter-container {
+  padding: 8px;
+}
+
+.cell-green {
+    color: green;
+    font-weight: 500;
+}
+
+.cell-red {
+    color: red;
+    font-weight: 500;
+}
+
+.cell-normal {
+  font-weight: 500;
+}
+
+.mat-header-row {
+  background-color: #224681;
+  color: white !important;
+  font-weight: 500;
+}
+
+.mat-header-cell  {
+  color: white !important;
+}
+
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.page-bottom {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  left: 300px;
+}

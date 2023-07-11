@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Partner adatok</h2>
+
+<mat-dialog-content class="mat-typography">
+
+    <mat-form-field appearance="fill">
+        <mat-label>Megnevezés</mat-label>
+        <input matInput placeholder="megnevezés" [formControl]="name" required>
+        <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Telefon</mat-label>
+        <input matInput placeholder="+36 30 1234-567" [formControl]="phone">
+
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="user@example.com" [formControl]="email">
+    </mat-form-field>
+
+    <button mat-stroked-button style="margin-left: 8px;" (click)="save()">Módosítás</button> 
+
+    <mat-tab-group>
+        <mat-tab label="Készlet">
+            
+            <app-partner-details-stock [partnerId]="partnerId"></app-partner-details-stock>
+
+        </mat-tab>
+
+        <mat-tab label="Készlet mozgás">
+
+            <app-partner-details-stock-history [partnerId]="partnerId"></app-partner-details-stock-history>
+
+        </mat-tab>
+    </mat-tab-group>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close cdkFocusInitial>Bezár</button>
+</mat-dialog-actions>

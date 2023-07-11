@@ -1,0 +1,19 @@
+<div class="content" fxLayout="row" fxLayout.xs="column" fxLayoutGap="5px" style="min-height: 100%;">
+
+  <div fxFlex="0 0 300px" class="sidebar mat-elevation-z2">
+    <div class="logo"></div>
+    <mat-nav-list>
+      <a mat-list-item routerLinkActive="active" routerLink="/partners">Partnerek <button mat-icon-button (click)="createNew();"><mat-icon style="color:white">add_circle</mat-icon></button></a>
+      <a mat-list-item routerLinkActive="active" routerLink="/storages">Raktárak</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/inventory">Készlet</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/inventory-history">Készlet mozgás</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/load">Betáraz</a>
+      <!-- <a mat-list-item routerLinkActive="active" routerLink="/unload">Kitáraz</a> -->
+    </mat-nav-list>
+  </div>
+
+  <div fxFlex="1 1 100%" class="main">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

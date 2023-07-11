@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Új partner</h2>
+<mat-dialog-content>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Megnevezés</mat-label>
+            <input matInput placeholder="megnevezés" [formControl]="name" required>
+            <mat-error *ngIf="name.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Telefon</mat-label>
+            <input matInput placeholder="+36 30 1234-567" [formControl]="phone">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input matInput placeholder="user@example.com" [formControl]="email">
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button (click)="save()">Mentés</button>
+    <button mat-raised-button mat-dialog-close>Bezár</button>
+</mat-dialog-actions>

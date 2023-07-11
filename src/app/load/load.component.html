@@ -1,0 +1,86 @@
+<div class="page-container">
+
+  <div class="page-table-container  mat-elevation-z2">
+    <table mat-table [dataSource]="dataSource" fxFill #inputTable>
+
+    <ng-container matColumnDef="partner">
+        <th mat-header-cell *matHeaderCellDef > Partner </th>
+        <td mat-cell *matCellDef="let element">
+
+          <mat-form-field floatLabel="never">
+            <input matInput type="text" [matAutocomplete]="auto1" #inputPartner [(ngModel)]="element.partnerFilter" (input)="stateInputChange$.next(inputPartner.value)" (click)="inputPartner.select()">
+            <mat-autocomplete #auto1="matAutocomplete" autoActiveFirstOption (optionSelected)='selectedPartner(element, $event.option.value)' [displayWith]="getLookupOptionText">
+              <mat-option *ngFor="let option of filteredPartners$ | async" [value]="option">{{option.name}}</mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef > Megnevezés </th>
+      <td mat-cell *matCellDef="let element">
+
+        <mat-form-field floatLabel="never">
+          <input matInput type="text" [matAutocomplete]="auto2" #inputName [(ngModel)]="element.nameFilter" (input)="stockItemInputChange$.next(inputName.value)" (click)="inputName.select()">
+          <mat-autocomplete #auto2="matAutocomplete" autoActiveFirstOption (optionSelected)='selectedStockItem(element, $event.option.value)' [displayWith]="getLookupOptionText">
+            <mat-option *ngFor="let option of filteredStockItem$ | async" [value]="option">{{option.name}}</mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef > Helység </th>
+      <td mat-cell *matCellDef="let element">
+
+        <mat-form-field floatLabel="never">
+          <input matInput type="text" [matAutocomplete]="auto3" #inputLocation [(ngModel)]="element.locationFilter" (input)="stockItemLocationInputChange$.next(inputLocation.value)" (click)="inputLocation.select()">
+          <mat-autocomplete #auto3="matAutocomplete" autoActiveFirstOption (optionSelected)='selectedStockLocation(element, $event.option.value)' [displayWith]="getLookupOptionText">
+            <mat-option *ngFor="let option of filteredStockItemLocation$ | async" [value]="option">{{option.name}}</mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="pallets">
+      <th mat-header-cell *matHeaderCellDef > Paletta </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <input matInput type="number" [(ngModel)]="element.pallets" #inputPallets (click)="inputPallets.select()" (keydown.enter)="newrow(element)"/>
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef > Darab </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-form-field floatLabel="never">
+          <input matInput type="number" [(ngModel)]="element.quantity" #inputQuantity (click)="inputQuantity.select()" (keydown.enter)="newrow(element)"/>
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="empties">
+      <th mat-header-cell *matHeaderCellDef > Göngyöleg </th>
+      <td mat-cell *matCellDef="let element">
+         <mat-form-field floatLabel="never">
+          <input matInput type="number" [(ngModel)]="element.empties" #inputEmpties (click)="inputEmpties.select()" (keydown.enter)="newrow(element)"/>
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+</div>
+<div class="page-bottom">
+  <mat-toolbar>
+    <button mat-icon-button (click)="newrow(null);"><mat-icon>add_circle</mat-icon></button>
+    <span class="toolbar-spacer"></span>
+    <button mat-raised-button (click)="load();">Betáraz</button> 
+  </mat-toolbar>
+</div>

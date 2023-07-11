@@ -1,0 +1,65 @@
+<div class="page-container">
+
+  <div class="page-filter-container">
+    <mat-form-field appearance="standard">
+      <mat-label>Keresés</mat-label>
+      <input matInput placeholder="Keresés" (keyup)="onSearchChange($event)">
+    </mat-form-field>
+  </div>
+
+  <div class="page-table-container mat-elevation-z2">
+      <table mat-table [dataSource]="dataSource" matSort (matSortChange)="onSortChange($event)" #partners>
+
+      <ng-container matColumnDef="partner_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Megnevezés </th>
+        <td mat-cell *matCellDef="let element"> {{element.partner_name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="partner_phone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefonszám </th>
+        <td mat-cell *matCellDef="let element"> {{element.partner_phone}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="partner_email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> E-mail </th>
+        <td mat-cell *matCellDef="let element"> {{element.partner_email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="updated">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Módosítva </th>
+        <td mat-cell *matCellDef="let element"> {{ element.updated | date: 'YYYY-MM-dd HH:mm:ss' }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="pallets">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Paletta </th>
+        <td mat-cell *matCellDef="let element">{{element.pallets}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="empties">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Kiadott göngyöleg </th>
+        <td mat-cell *matCellDef="let element">{{element.empties}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-raised-button (click)="editConfig(row)">Részletek</button> 
+        </td>
+      </ng-container> 
+      
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="5" style="text-align: center;">
+          Táblázat üres
+        </td>
+      </tr>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>  
+</div>
+<div class="page-bottom">
+  <mat-toolbar>
+    <mat-paginator [pageSize]="pageSize" [hidePageSize]="true" showFirstLastButtons></mat-paginator>
+  </mat-toolbar>
+</div>
